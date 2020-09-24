@@ -29,22 +29,22 @@ Rails:
 ######################################
 # NEW COPS (Evaluation)
 
-Layout/BeginEndAlignment: # (new in 0.91)
-  Enabled: true
-Lint/ConstantDefinitionInBlock: # (new in 0.91)
-  Enabled: true
+# Layout/BeginEndAlignment: # (new in 0.91)
+#   Enabled: true
+# Lint/ConstantDefinitionInBlock: # (new in 0.91)
+#   Enabled: true
 Lint/DuplicateRequire: # (new in 0.90)
   Enabled: true
 Lint/EmptyFile: # (new in 0.90)
   Enabled: true
-Lint/IdentityComparison: # (new in 0.91)
-  Enabled: true
+# Lint/IdentityComparison: # (new in 0.91)
+#   Enabled: true
 Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
   Enabled: true
 Lint/UselessMethodDefinition: # (new in 0.90)
   Enabled: true
-Lint/UselessTimes: # (new in 0.91)
-  Enabled: true
+# Lint/UselessTimes: # (new in 0.91)
+#   Enabled: true
 Style/CombinableLoops: # (new in 0.90)
   Enabled: true
 Style/KeywordParametersOrder: # (new in 0.90)

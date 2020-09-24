@@ -64,7 +64,7 @@ group :development do
   gem 'annotate'
   gem 'dip'
   gem 'listen'
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.90.0'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'

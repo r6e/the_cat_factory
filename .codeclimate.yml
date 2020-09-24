@@ -5,4 +5,4 @@ plugins:
     channel: eslint-7
   rubocop:
     enabled: true
-    channel: rubocop-0-91
+    channel: rubocop-0-90
