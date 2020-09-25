@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: the_cat_factory_production
-  username: the_cat_factory
-  password: <%= ENV['THE_CAT_FACTORY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
