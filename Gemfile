@@ -57,6 +57,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-byebug'
+  gem 'rspec_junit_formatter'
   gem 'rspec-rails'
 end
 
