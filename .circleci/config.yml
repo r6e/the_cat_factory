@@ -76,9 +76,9 @@ workflows:
           requires:      # Test requires that build passes for it to run.
             - build-test # Finally, run the build job.
       - deploy:
-        requires:
-          - test
-        filters:
-          branches:
-            only:
-              - master
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
