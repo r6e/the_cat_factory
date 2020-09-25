@@ -67,6 +67,7 @@ jobs:
       - checkout
       - heroku/install
       - heroku/push-docker-image
+      - heroku/release-docker-image
 
 
 # We use workflows to orchestrate the jobs that we declared above.
