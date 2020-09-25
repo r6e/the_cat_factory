@@ -14,15 +14,9 @@ RUN apk add --no-cache --update \
 
 # Default environment to 'production' to fail-closed if the ENV gets meesed up in production
 ENV LANG=C.UTF-8 \
-  BUNDLE_JOBS=4 \
-  BUNDLE_RETRY=3 \
-  NODE_ENV=${NODE_ENV:-production} \
-  RAILS_ENV=${RAILS_ENV:-production} \
-  RACK_ENV=${RACK_ENV:-production} \
-  REDIS_URL=${REDIS_URL} \
-  DATABASE_URL=${DATABASE_URL} \
-  RAILS_PORT=${PORT:-3000} \
-  PATH=/app/bin:$PATH
+    BUNDLE_JOBS=4 \
+    BUNDLE_RETRY=3 \
+    PATH=/app/bin:$PATH
 
 # Upgrade RubyGems and install required Bundler version
 RUN gem update --system && \
@@ -30,11 +24,17 @@ RUN gem update --system && \
 
 # Create a directory for the app code
 RUN mkdir -p /app
-
-# Production-related. The COPY slows down our development deploys, but there's currently no way to
-# conditionally COPY yet
-COPY . /app
 WORKDIR /app
+
+COPY Gemfile Gemfile.lock ./
+COPY package.json yarn.lock ./
+
+ENV NODE_ENV=${NODE_ENV:-production} \
+    RAILS_ENV=${RAILS_ENV:-production} \
+    RACK_ENV=${RACK_ENV:-production} \
+    REDIS_URL=${REDIS_URL} \
+    DATABASE_URL=${DATABASE_URL} \
+    RAILS_PORT=${PORT:-3000}
 
 RUN if [ $RAILS_ENV = 'production' ]; then \
       bundle install & bundle_pid=$! && \
@@ -42,5 +42,9 @@ RUN if [ $RAILS_ENV = 'production' ]; then \
       wait $bundle_pid && \
       webpack; \
     fi
+
+# Production-related. The COPY slows down our development deploys, but there's currently no way to
+# conditionally COPY yet
+COPY . /app
 
 CMD rails server -p $RAILS_PORT -b 0.0.0.0
