@@ -38,7 +38,7 @@ workers ENV.fetch('WEB_CONCURRENCY', 5)
 plugin :tmp_restart
 
 # Heroku Metrics
-if Rails.env.production?
+if ENV.fetch('RAILS_ENV') == 'production'
   require 'barnes'
 
   before_fork do
