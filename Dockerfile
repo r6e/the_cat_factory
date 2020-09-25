@@ -35,7 +35,7 @@ RUN mkdir -p /app
 # conditionally COPY yet
 COPY . /app
 RUN if [ $RAILS_ENV = 'production' ]; then \
-      bundle install & \
+      bundle install && \
       yarn install --frozen-lockfile && \
       rails assets:precompile; \
     fi
