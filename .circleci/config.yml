@@ -66,8 +66,11 @@ jobs:
       - setup_remote_docker
       - checkout
       - heroku/install
-      - heroku/push-docker-image
-      - heroku/release-docker-image
+      - heroku/push-docker-image:
+          app-name: the-cat-factory web # Workaround for CircleCI orb bug
+      - heroku/release-docker-image:
+          app-name: the-cat-factory
+          process-types: web
 
 
 # We use workflows to orchestrate the jobs that we declared above.
