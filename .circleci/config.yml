@@ -64,7 +64,8 @@ jobs:
       - setup_remote_docker
       - checkout
       - heroku/install
-      - heroku/push-docker-image
+      - heroku/push-docker-image:
+          process-types: web
 
 
 # We use workflows to orchestrate the jobs that we declared above.
