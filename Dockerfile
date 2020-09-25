@@ -34,13 +34,13 @@ RUN mkdir -p /app
 # Production-related. The COPY slows down our development deploys, but there's currently no way to
 # conditionally COPY yet
 COPY . /app
+WORKDIR /app
+
 RUN if [ $RAILS_ENV = 'production' ]; then \
       bundle install & bundle_pid=$! && \
       yarn install --frozen-lockfile && \
       wait $bundle_pid && \
       rails assets:precompile; \
     fi
-
-WORKDIR /app
 
 CMD rails server -p $RAILS_PORT -b 0.0.0.0
