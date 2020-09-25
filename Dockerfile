@@ -12,11 +12,13 @@ RUN apk add --no-cache --update \
     tzdata \
     yarn
 
-# Default environment to 'production' to fail-closed if the ENV gets meesed up in production
 ENV LANG=C.UTF-8 \
     BUNDLE_JOBS=4 \
     BUNDLE_RETRY=3 \
-    PATH=/app/bin:$PATH
+    PATH=/app/bin:$PATH \
+    NODE_ENV=${NODE_ENV:-development} \
+    RAILS_ENV=${RAILS_ENV:-development} \
+    RACK_ENV=${RACK_ENV:-development}
 
 # Upgrade RubyGems and install required Bundler version
 RUN gem update --system && \
@@ -25,27 +27,3 @@ RUN gem update --system && \
 # Create a directory for the app code
 RUN mkdir -p /app
 WORKDIR /app
-
-# This allows us to only run bundle/yarn install when in production AND dependencies have changed
-COPY Gemfile Gemfile.lock ./
-COPY package.json yarn.lock ./
-
-ENV NODE_ENV=${NODE_ENV:-production} \
-    RAILS_ENV=${RAILS_ENV:-production} \
-    RACK_ENV=${RACK_ENV:-production} \
-    REDIS_URL=${REDIS_URL} \
-    DATABASE_URL=${DATABASE_URL} \
-    RAILS_PORT=${PORT:-3000}
-
-RUN if [ $RAILS_ENV = 'production' ]; then \
-      bundle install & bundle_pid=$! && \
-      yarn install --frozen-lockfile && \
-      wait $bundle_pid; \
-    fi
-
-# The rest of the application code is added here so we don't re-install dependencies if not needed
-COPY . .
-
-RUN if [ $RAILS_ENV = 'production' ]; then webpack; fi
-
-CMD rails server -p $RAILS_PORT -b 0.0.0.0

@@ -70,6 +70,9 @@ GEM
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
     awesome_print (1.8.0)
+    barnes (0.0.8)
+      multi_json (~> 1)
+      statsd-ruby (~> 1.1)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -85,6 +88,9 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     cliver (0.3.2)
+    clockwork (2.0.4)
+      activesupport
+      tzinfo
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
     connection_pool (2.2.3)
@@ -140,6 +146,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
+    multi_json (1.15.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -258,6 +265,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    statsd-ruby (1.4.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     to_bool (2.0.0)
@@ -292,8 +300,10 @@ DEPENDENCIES
   audited
   auto_strip_attributes
   awesome_print
+  barnes
   bootsnap (>= 1.4.2)
   capybara
+  clockwork
   cuprite
   data_migrate
   dip
