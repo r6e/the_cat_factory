@@ -1,4 +1,5 @@
-# README
+# The Cat Factory
+[![Build](https://circleci.com/gh/r6e/the_cat_factory.svg?style=shield)](https://circleci.com/gh/r6e/the_cat_factory) [![Maintainability](https://api.codeclimate.com/v1/badges/1da8beb9a31fe8453781/maintainability)](https://codeclimate.com/github/r6e/the_cat_factory/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1da8beb9a31fe8453781/test_coverage)](https://codeclimate.com/github/r6e/the_cat_factory/test_coverage)
 
 The Cat Factory is a simple app concept, intended to be re-written in different frameworks and languages. This allows for a clear and concise goal around which to structure learning new tools and refining skills and tehniques.
 
