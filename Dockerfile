@@ -40,7 +40,7 @@ RUN if [ $RAILS_ENV = 'production' ]; then \
       bundle install & bundle_pid=$! && \
       yarn install --frozen-lockfile && \
       wait $bundle_pid && \
-      rails assets:precompile; \
+      webpack; \
     fi
 
 CMD rails server -p $RAILS_PORT -b 0.0.0.0
