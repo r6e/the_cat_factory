@@ -34,6 +34,7 @@ module TheCatFactory
       g.factory_bot true
       g.helper false
       g.orm :active_record, primary_key_type: :uuid
+      g.serializer true
       g.stylesheets false
       g.system_tests :rspec
       g.template_engine nil
