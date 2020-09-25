@@ -61,6 +61,8 @@ jobs:
   deploy:
     executor: heroku/default
     steps:
+      - setup_remote_docker:
+        version: 19.03.12
       - checkout
       - heroku/install
       - heroku/push-docker-image
