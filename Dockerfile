@@ -26,6 +26,7 @@ RUN gem update --system && \
 RUN mkdir -p /app
 WORKDIR /app
 
+# This allows us to only run bundle/yarn install when in production AND dependencies have changed
 COPY Gemfile Gemfile.lock ./
 COPY package.json yarn.lock ./
 
@@ -39,12 +40,12 @@ ENV NODE_ENV=${NODE_ENV:-production} \
 RUN if [ $RAILS_ENV = 'production' ]; then \
       bundle install & bundle_pid=$! && \
       yarn install --frozen-lockfile && \
-      wait $bundle_pid && \
-      webpack; \
+      wait $bundle_pid; \
     fi
 
-# Production-related. The COPY slows down our development deploys, but there's currently no way to
-# conditionally COPY yet
-COPY . /app
+# The rest of the application code is added here so we don't re-install dependencies if not needed
+COPY . .
+
+RUN if [ $RAILS_ENV = 'production' ]; then webpack; fi
 
 CMD rails server -p $RAILS_PORT -b 0.0.0.0
