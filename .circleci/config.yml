@@ -61,7 +61,7 @@ jobs:
       # Run rspec in parallel
       - ruby/rspec-test
   deploy:
-    executor: cimg/base:stable
+    executor: heroku/default
     steps:
         - heroku/install
         - heroku/check-authentication
