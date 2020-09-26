@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_09_25_223053) do
   enable_extension "plpgsql"
 
   create_table "cats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "image_url"
-    t.integer "score"
+    t.text "image_url", null: false
+    t.integer "score", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -17,7 +17,7 @@ class CatsController < ApplicationController
   def upvote
     respond_to :json
 
-    if @cat.increment(:score)
+    if @cat.increment!(:score) # rubocop:disable Rails/SkipsModelValidations
       set_random_cat
       render json: serialize_cat
       return
@@ -29,9 +29,9 @@ class CatsController < ApplicationController
   def downvote
     respond_to :json
 
-    if @cat.decrement(:score)
+    if @cat.decrement!(:score) # rubocop:disable Rails/SkipsModelValidations
       set_random_cat
-      format.json { render json: serialize_cat }
+      render json: serialize_cat
       return
     end
 
@@ -41,7 +41,8 @@ class CatsController < ApplicationController
   private
 
   def set_random_cat
-    @cat = Cat.order('RANDOM()').take
+    # Never return the same cat
+    @cat = Cat.where.not(id: @cat&.id).order('RANDOM()').take
   end
 
   # Use callbacks to share common setup or constraints between actions.
