@@ -60,6 +60,15 @@ jobs:
           command: bundle exec rails db:schema:load --trace
       # Run rspec in parallel
       - ruby/rspec-test
+  deploy:
+    executor: cimg/base:stable
+    steps:
+        - install
+        - check-authentication
+        - checkout
+        - deploy-via-git:
+            branch: master # If the filter fails or is removed, still only deploy master
+            force: true
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
@@ -70,7 +79,7 @@ workflows:
       - test:            # Then run test,
           requires:      # Test requires that build passes for it to run.
             - build-test # Finally, run the build job.
-      - heroku/deploy-via-git:
+      - deploy:
           requires:
             - test
           filters:
