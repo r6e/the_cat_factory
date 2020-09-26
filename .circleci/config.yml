@@ -63,10 +63,10 @@ jobs:
   deploy:
     executor: cimg/base:stable
     steps:
-        - install
-        - check-authentication
+        - heroku/install
+        - heroku/check-authentication
         - checkout
-        - deploy-via-git:
+        - heroku/deploy-via-git:
             branch: master # If the filter fails or is removed, still only deploy master
             force: true
 
