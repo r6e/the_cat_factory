@@ -24,10 +24,12 @@ gem 'sidekiq', '~> 6.1'
 
 # Data
 ###
+gem 'active_storage_validations'
 gem 'acts_as_paranoid'
 gem 'auto_strip_attributes'
 gem 'data_migrate'
-# gem 'google-cloud-storage', '~> 1.2', require: false
+gem 'google-cloud-storage', '~> 1.29'
+gem 'mini_magick'
 
 # Convenience
 ###

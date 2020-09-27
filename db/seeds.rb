@@ -1,1 +1,1 @@
-FactoryBot.create_list(:cat, 99)
+FactoryBot.create_list(:cat, 10)
