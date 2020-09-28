@@ -192,3 +192,9 @@ GitHub.sublime-settings
 # Uncomment the following lines if you're not using Zero-Installs:
 .yarn/cache
 .pnp.*
+
+/config/credentials/production.key
+
+/config/credentials/development.key
+
+/config/credentials/test.key

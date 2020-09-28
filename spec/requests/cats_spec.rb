@@ -14,10 +14,10 @@ require 'rails_helper'
 
 RSpec.describe '/cats', type: :request do
   let(:json_headers) { { 'ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json' } }
+  let!(:described_cat) { create(:cat, score: 1337) }
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      create(:cat)
       get cats_url
       expect(response).to be_successful
     end
@@ -25,21 +25,19 @@ RSpec.describe '/cats', type: :request do
 
   describe 'POST /upvote' do
     it "increments the Cat's score" do
-      cat = create(:cat, score: 1336)
-      post upvote_cat_url(cat), headers: json_headers
+      post upvote_cat_url(described_cat), headers: json_headers
 
       expect(response.content_type).to match(%r{application/[^;]*json; charset=utf-8})
-      expect(cat.reload.score).to eq(1337)
+      expect(described_cat.reload.score).to eq(1338)
     end
   end
 
   describe 'POST /downvote' do
     it "increments the Cat's score" do
-      cat = create(:cat, score: 1338)
-      post downvote_cat_url(cat), headers: json_headers
+      post downvote_cat_url(described_cat), headers: json_headers
 
       expect(response.content_type).to match(%r{application/[^;]*json; charset=utf-8})
-      expect(cat.reload.score).to eq(1337)
+      expect(described_cat.reload.score).to eq(1336)
     end
   end
 end

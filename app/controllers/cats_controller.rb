@@ -56,6 +56,6 @@ class CatsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def cat_params
-    params.require(:cat).permit(:image_url, :score)
+    params.require(:cat).permit(:score)
   end
 end
