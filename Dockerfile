@@ -4,6 +4,7 @@ RUN apk add --no-cache --update \
     bind-tools \
     build-base \
     chromium chromium-chromedriver \
+    imagemagick \
     less \
     libxml2 \
     libxslt \

@@ -13,10 +13,16 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.before(:each, type: :request) do
+    # Attempting to get the URL for an attachment fails if host is nil
+    ActiveStorage::Current.host = 'http://localhost'
+  end
 end
