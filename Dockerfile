@@ -3,7 +3,6 @@ FROM ruby:2.7.1-alpine AS base
 RUN apk add --no-cache --update \
     bind-tools \
     build-base \
-    chromium chromium-chromedriver \
     imagemagick \
     less \
     libxml2 \
@@ -26,6 +25,8 @@ RUN gem update --system && \
 # Development Image
 ###
 FROM base AS development
+
+RUN apk add --no-cache chromium chromium-chromedriver
 
 ENV NODE_ENV=${NODE_ENV:-development} \
     RAILS_ENV=${RAILS_ENV:-development} \
