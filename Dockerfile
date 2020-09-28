@@ -48,7 +48,8 @@ ENV NODE_ENV=production \
     DB_USER=${DB_USER} \
     PGPASSWORD=${PGPASSWORD} \
     DATABASE_URL=${DATABASE_URL} \
-    RAILS_PORT=${PORT:-3000}
+    RAILS_PORT=${PORT:-3000} \
+    BUNDLE_WITHOUT="development test"
 
 # Upgrade RubyGems and install required Bundler version
 RUN gem update --system && \
