@@ -50,6 +50,7 @@ ENV NODE_ENV=production \
     DATABASE_URL=${DATABASE_URL} \
     SECRET_KEY_BASE=${SECRET_KEY_BASE} \
     RAILS_PORT=${PORT:-8080} \
+    RAILS_SERVE_STATIC_FILES=${RAILS_SERVE_STATIC_FILES:-true} \
     BUNDLE_WITHOUT="development test"
 
 # Upgrade RubyGems and install required Bundler version
