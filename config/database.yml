@@ -83,5 +83,4 @@ production:
   <<: *default
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['PGPASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

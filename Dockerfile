@@ -46,9 +46,10 @@ ENV NODE_ENV=production \
     REDIS_URL=${REDIS_URL} \
     DB_HOST=${DB_HOST} \
     DB_USER=${DB_USER} \
-    PGPASSWORD=${PGPASSWORD} \
+    DB_PASSWORD=${DB_PASSWORD} \
     DATABASE_URL=${DATABASE_URL} \
-    RAILS_PORT=${PORT:-3000} \
+    SECRET_KEY_BASE=${SECRET_KEY_BASE} \
+    RAILS_PORT=${PORT:-8080} \
     BUNDLE_WITHOUT="development test"
 
 # Upgrade RubyGems and install required Bundler version

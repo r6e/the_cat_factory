@@ -43,7 +43,7 @@ jobs:
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
       PGUSER: the_cat_factory
-      PGPASSWORD: ""
+      DB_PASSWORD: ""
       RAILS_ENV: test
       RACK_ENV: test
       NODE_ENV: test
