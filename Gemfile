@@ -20,7 +20,7 @@ gem 'webpacker-react'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'clockwork'
 gem 'rack-timeout', '~> 0.6'
-gem 'sidekiq', '~> 6.1'
+gem 'sidekiq', '~> 6.4'
 
 # Data
 ###
